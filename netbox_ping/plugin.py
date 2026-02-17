@@ -42,7 +42,7 @@ def initialize_plugin():
     link, _ = CustomLink.objects.get_or_create(
         name='Ping IP',
         link_text='Ping',
-        link_url='plugins/netbox-ping/ping-ip/{{ object.address }}/',
+        link_url='/plugins/netbox-ping/ping-ip/{{ object.address }}/',
         weight=100
     )
     ipaddress_type = ObjectType.objects.get(app_label='ipam', model='ipaddress')
@@ -52,7 +52,7 @@ def initialize_plugin():
     link, _ = CustomLink.objects.get_or_create(
         name='Ping Subnet',
         link_text='Ping Subnet',
-        link_url='plugins/netbox-ping/scan-prefix/{{ object.prefix }}/?action=ping',
+        link_url='/plugins/netbox-ping/scan-prefix/{{ object.prefix }}/?action=ping',
         weight=100
     )
     prefix_type = ObjectType.objects.get(app_label='ipam', model='prefix')
@@ -62,7 +62,7 @@ def initialize_plugin():
     link, _ = CustomLink.objects.get_or_create(
         name='Discover IPs',
         link_text='Discover IPs',
-        link_url='plugins/netbox-ping/scan-prefix/{{ object.prefix }}/?action=scan',
+        link_url='/plugins/netbox-ping/scan-prefix/{{ object.prefix }}/?action=scan',
         weight=200
     )
     link.object_types.add(prefix_type)
